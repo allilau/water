@@ -3,15 +3,18 @@ layout: default
 altair-loader:
   altair-chart-1: "charts/measlesAltair.json"
 hv-loader:
-  hv-chart-1: ["charts/measlesHvplot.html", "500"] # second argument is the desired height
+  hv-heatmap-1: ["charts/dayheatmap.html", "600"] # second argument is the desired height
+  hv-rain-map-1: ["charts/rainfall_map.html", "500]
+  hv-watershed-map-1: ["charts/watershed_map.html", "400"]
+  
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
 ---
 
-# Welcome!
+# welcome
 
-This single-page website demos how to display visualizations created with altair, hvplot, and folium.
+For the MUSA550 final project, I want to visualize a rianfall dataset that contains hourly precipitation measurements from 1990 to 2011 for each of the 24 rain gauges in Philadelphia. 
 
 For examples of how to use markdown to style text, see this [this page](./another-page.html).
 
@@ -32,17 +35,23 @@ import altair as alt
 alt.renderers.enable('notebook')
 ```
 
-## HvPlot Example
+## rainfall daily totals 
 
-Lastly, the measles incidence produced using the HvPlot package:
+below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
 
-<div id="hv-chart-1"></div>
+<div id="hv-heatmap-1"></div>
 
-## Notes
+## rainfall seasonal totals 
 
-- See the [lecture 13A slides](https://musa-550-fall-2021.github.io/slideslecture-13A.html) for the code that produced these plots.
+below is an interactive map of the rain gauge rainfall seasonal totals (1990-2011)
 
-**Important: When embedding charts, you will likely need to adjust the width/height of the charts before embedding them in the page so they fit nicely when embedded.**
+<div id="hv-rain-map-1"></div>
+
+#rainfall seasonal totals for each watershed
+
+below is an interactive map of the rain gauge rainfall seasonal totals for each watershed within Philadelphia (1990-2011)
+
+<div id="hv-watershed-map-1"></div>
 
 # Example: Embedding Folium charts
 
