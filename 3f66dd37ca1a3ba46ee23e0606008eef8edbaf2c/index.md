@@ -4,6 +4,7 @@ altair-loader:
   altair-chart-1: "charts/measlesAltair.json"
 hv-loader:
   hv-heatmap-1: ["charts/dayheatmap.html", "600"] # second argument is the desired height
+  hv-heatmap-0: ["charts/measlesHvplot.html", "600]
   hv-rain-map-1: ["charts/rainfall_map.html", "500]
   hv-watershed-map-1: ["charts/watershed_map.html", "400"]
   
@@ -40,6 +41,7 @@ alt.renderers.enable('notebook')
 below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
 
 <div id="hv-heatmap-1"></div>
+<div id="hv-heatmap-0"></div>
 
 ## rainfall seasonal totals 
 
