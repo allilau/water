@@ -20,7 +20,8 @@ For the MUSA550 final project, I wanted to visualize a rainfall dataset that con
 ## a. rainfall in philadelphia from 1990-2011
 Over 700,000 rows of raw data from rain gauges throughout the city without QAQC, the dataset contained some errors. To read the csv in through pandas, the parameter 'error_bad_lines' had to be adjusted since lines with too many fields will by default cause an exception to be raised, and no DataFrame will be returned.
 
-```df = pd.read_csv("Rainfall_data_19900101_20210602_EST.csv", 
+```python
+df = pd.read_csv("Rainfall_data_19900101_20210602_EST.csv", 
                     error_bad_lines=False,
                     engine='python')
 ```
@@ -34,8 +35,8 @@ Cloudbursts are events with sudden, very intense rainfalls that occur for a brie
 
 To examine when these events occur, we would have to analyze the dataset on a daily level. After prepping the data, the first step of analysis included calculating the total rainfall per day for each of the 24 gauges. This involved the groupby() operation and taking a sum of the inches for the day for each gauge. In order to calculate the sum by day, I had to group by the gauge and return the DateTime back to a string to represent just the YYYY-MM-DD, without the hourly 'HH:MM:SS'. 
 
-```dayavg = df.groupby(["gauge", df.DateTime.dt.strftime('%m-%d-%Y')])['inches'].sum().reset_index()
-
+```python
+dayavg = df.groupby(["gauge", df.DateTime.dt.strftime('%m-%d-%Y')])['inches'].sum().reset_index()
 ```
 
 The DateTime column was then converted back to a Python date time object in order to perform further analysis. The hvplot heatmap was chosen to visually represent the daily totals, where the user can filter between the gauges and years and determine (based on a darker blue color), when precipitation was highest in that year for the particular rain gauge. Below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
@@ -44,7 +45,7 @@ The DateTime column was then converted back to a Python date time object in orde
 
 The top precipitation events from 1990-2011 occured on September 16, 1999 and September 28, 2004, with a daily maximum total of 8.7 and 8.3 inches, respectively. Several gauges reported 8+ inches of rainfall on 9/16/1999. I used the nlargest() function to sort through the heatmap dataset and return the top 10 daily precipitation totals. 
 
-~![top-10-daily-rainfall]({{ site.url }}{{ site.baseurl }}/assets/images/top10dailytotalrainfall.PNG
+~![top-10-daily-rainfall]({{ site.url }}{{ site.baseurl }}/assets/images/top10dailytotalrainfall.PNG)
 
 ### rainfall seasonal totals 
 How can we visualize where these rain gauges are located in the city / where do these cloudburst events occur on a local scale? 
