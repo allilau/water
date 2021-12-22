@@ -48,7 +48,22 @@ The top precipitation events from 1990-2011 occured on September 16, 1999 and Se
 ~![top-10-daily-rainfall]({{ site.url }}{{ site.baseurl }}/assets/img/top10dailytotalrainfall.PNG)
 
 ### rainfall seasonal totals 
-How can we visualize where these rain gauges are located in the city / where do these cloudburst events occur on a local scale? 
+How can we visualize where these rain gauges are located in the city / where do these cloudburst events occur on a local scale? How can we visualize the seasonal patterns of preciptation in the city? Seasonal statistics for precipitation are helpful in planning work, as it helps identify patterns of heavy precipitation in the city through the year. Often times, precipitation statistics are presented as annual averages, but seasonal averages are more applicable in a local context. 
+
+To prepare and analyze the heatmap daily totals dataset to calculate the seasonal totals, I first determined the monthly rainfall totals for each gauge using the groupby() operation and taking the sum of daily rainfall for each month (following the same procedure from the section above). To find the seasonal totals, I first had to assign months to the appropriate season and then created a new column in the dataset with the relevant season. Winter months include December through February (12, 1, 2); Fall months are from September through November (9-11); Spring months  are from March through May (3-5); Summer months are from June through August (6-8). 
+
+```python
+conditions = [
+    (monthtt.DateTime.dt.month.isin([12, 1, 2])),
+    (monthtt.DateTime.dt.month.isin([9, 10,11])),
+    (monthtt.DateTime.dt.month.isin([3, 4, 5])), 
+    (monthtt.DateTime.dt.month.isin([6, 7, 8])),
+  ]
+choices = ['winter','fall', 'spring', 'summer']
+monthtt['season'] = np.select(conditions, choices)
+```
+At this point, we have each gauge month record associated with a season. We have still need to aggregate the months to find the seasonal totals. I first created a new column with just the year using the .strftime() parameter for %Y, and used the groupby() operation to find the seasonal rainfall totals for each gauge. 
+
 
 
 below is an interactive map of the rain gauge rainfall seasonal totals (1990-2011)
@@ -56,6 +71,7 @@ below is an interactive map of the rain gauge rainfall seasonal totals (1990-201
 <div id="hv-rain-map-1"></div>
 
 ### rainfall seasonal totals for each watershed
+Currently, seasonal precipitation totals are helpful for determining precipitation projections. This is because the resolution of available precipitation-prediction models are not yet high enough to to accomodate for each single gauge location. can be useful when working with downscaled projections from climate models. 
 
 below is an interactive map of the rain gauge rainfall seasonal totals for each watershed within Philadelphia (1990-2011)
 
