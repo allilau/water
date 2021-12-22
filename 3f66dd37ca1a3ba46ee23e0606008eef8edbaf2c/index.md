@@ -14,7 +14,7 @@ folium-loader:
 # welcome
 
 For the MUSA550 final project, I wanted to visualize a rainfall dataset that contains hourly precipitation measurements from 1990 to 2011 for each of the 24 rain gauges in Philadelphia. For the second part of the project, I wanted to examine PWD's main break dataset and create visualizations that will look into the concentration of main break types. Due to the large size of the original dataset, I decided to only explore the circumferential main breaks that occurred in 2020. The leading questions that helped drive the creation of the visuals presented below are as follows: 
-- Where are cloudburst events concentrated in the city (i.e. northeast, southwest) seasonally? How can we visualize the distribution of rainfall during one of these events?
+- Where are cloudburst events concentrated in the city (i.e. northeast, southwest) seasonally? What months did they occur? How can we visualize the distribution of rainfall during one of these events?
 - Where are water main breaks located and concentrated in Philadelphia in 2020? 
 
 ## a. rainfall in philadelphia from 1990-2011
@@ -25,10 +25,12 @@ Over 700,000 rows of raw data from rain gauges throughout the city without QAQC,
                     engine='python')
 ```
 
-Setting the parameter 'error_bad_lines' as False, the "bad lines" are dropped from the DataFrame that is returned. The dataset was further trimmed to only columns that were needed and missing data was removed (i.e. empty columns for rain gauges 25-37, missing data in the coordinate columns). 
-Because I'm primarily interested in the temporal changes of rainfall in the city, the to_datetime() method was essential to this analysis and used to convert string Date time into a Python date time object. 
+Setting the parameter 'error_bad_lines' as False, the "bad lines" are dropped from the DataFrame that is returned. The dataset was further trimmed to only columns that were needed and missing data was removed (i.e. empty columns for rain gauges 25-37, missing data in the columns for coordinates). 
+
+Another note is that the dataset was in a format where each rain gauge had its own column. Because I'm primarily interested in the temporal changes of rainfall in the city, I wanted the data in a format where each row is an observation of the rainfall measurement for each gauge (i.e. date column). I used the melt() function for converting to the desired format. The to_datetime() method was also essential to this analysis and used to convert string Date time into a Python date time object. 
 
 ### rainfall daily totals 
+Cloudburst events are After prepping the data, the first step of analysis includes calculating the total rainfall per day for each of the 24 gauges. 
 
 below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
 
