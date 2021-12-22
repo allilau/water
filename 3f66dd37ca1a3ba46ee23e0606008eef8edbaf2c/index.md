@@ -4,7 +4,7 @@ altair-loader:
   altair-chart-1: "charts/breaktypes2020.json"
   altair-chart-2: "charts/circbreaks2020_map.json"
 hv-loader:
-  hv-rain-map-1: ["charts/rainfall_map.html", "800"] # second argument is the desired height
+  hv-rain-map-1: ["charts/rainfall_map.html", "770"] # second argument is the desired height
   hv-chart-2: ["charts/dayheatmap.html", "860"]
   hv-watershed-map-1: ["charts/watershed_maptrim.html", "850"]
 folium-loader:
@@ -18,7 +18,7 @@ For the MUSA550 final project, I wanted to visualize a rainfall dataset that con
 ## a. rainfall in philadelphia from 1990-2011
 ### rainfall daily totals 
 
-below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)cinnamon
+below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
 
 <div id="hv-chart-2"></div>
 
