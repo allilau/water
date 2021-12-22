@@ -8,7 +8,7 @@ hv-loader:
   hv-chart-2: ["charts/dayheatmap.html", "830"]
   hv-watershed-map-1: ["charts/watershed_maptrim.html", "750"]
 folium-loader:
-
+  folium-chart-1: ["charts/breakheatmap.html", "500"]
 ---
 
 # welcome
@@ -116,7 +116,22 @@ The most breaks that occurred in 2020, by a margin of 191, was circumferential (
 ~![top-5-main-break-type]({{ site.url }}{{ site.baseurl }}/assets/img/top5break.PNG)
 
 ### where did circumferential breaks occur? 
+How can we visualize the circumferential breaks in 2020? I created a dataframe with only the circumferential main break types in 2020 using the .query() operation. To visualize at first glance, I created a heatmap using folium, centered in Philadelphia. 
 
+```python
+circ_m = folium.Map(
+    location=[39.99, -75.13],
+    tiles='Cartodb Positron',
+    zoom_start=12,
+)
+HeatMap(circ_2020_coords, radius=15).add_to(circ_m)
+```
+<div id="folium-chart-1"></div>
+The heatmap shows that in 2020, main breaks mostly occurred in Southeast Philadelphia. This correlates with the PGW event that occurred in that year, which ended up also breaking many transmission mains. 
+
+For a more detailed analysis, I wanted to explore the breaks by neighborhood. Using the zillow dataset from class, I spatially joined the neighborhood data with the 2020 main break data so that each event is associated with a neighborhoood. I then used the .groupby() operation and .size() to determine the number of main breaks that occurred in each neighborhood. I merged this dataframe back with the zillow neighborhood data so that I can plot this visually using altair.
+
+Below is an interactive map that displays the number of main breaks that occurred in each neighborhood in 2020. Neighborhoods with no main breaks are shown in white. The tooltip displays the neighborhood name and the number of main breaks. 
 <div id="altair-chart-2"></div>
-
+The most main breaks in 2020 occured in Grays Ferry (total of 12 events). 
 <br/>
