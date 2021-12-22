@@ -7,7 +7,6 @@ hv-loader:
   hv-chart-2: ["charts/dayheatmap.html", "860"]
   hv-watershed-map-1: ["charts/watershed_maptrim.html", "850"]
 folium-loader:
-  folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
 ---
 
@@ -32,15 +31,5 @@ below is an interactive map of the rain gauge rainfall seasonal totals (1990-201
 below is an interactive map of the rain gauge rainfall seasonal totals for each watershed within Philadelphia (1990-2011)
 
 <div id="hv-watershed-map-1"></div>
-
-# Example: Embedding Folium charts
-
-This post will show examples of embedding interactive maps produced using [Folium](https://github.com/python-visualization/folium).
-
-## OSMnx and Street Networks
-
-The shortest route between the Art Museum and the Liberty Bell:
-
-<div id="folium-chart-1"></div>
 
 <br/>
