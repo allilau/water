@@ -35,6 +35,7 @@ Cloudbursts are events with sudden, very intense rainfalls that occur for a brie
 To examine when these events occur, we would have to analyze the dataset on a daily level. After prepping the data, the first step of analysis included calculating the total rainfall per day for each of the 24 gauges. This involved the groupby() operation and taking a sum of the inches for the day for each gauge. In order to calculate the sum by day, I had to group by the gauge and return the DateTime back to a string to represent just the YYYY-MM-DD, without the hourly 'HH:MM:SS'. 
 
 ```dayavg = df.groupby(["gauge", df.DateTime.dt.strftime('%m-%d-%Y')])['inches'].sum().reset_index()
+
 ```
 
 The DateTime column was then converted back to a Python date time object in order to perform further analysis. The hvplot heatmap was chosen to visually represent the daily totals, where the user can filter between the gauges and years and determine (based on a darker blue color), when precipitation was highest in that year for the particular rain gauge. Below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
