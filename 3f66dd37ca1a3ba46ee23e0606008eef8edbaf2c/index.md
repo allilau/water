@@ -1,12 +1,12 @@
 ---
 layout: default
 altair-loader:
-  altair-chart-1: ["charts/breaktypes2020.json", "400"]
+  altair-chart-0: ["charts/breaktypes2020.json", "600"]
   altair-chart-2: ["charts/circbreaks2020_map.json"]
 hv-loader:
-  hv-rain-map-1: ["charts/rainfall_map.html", "700"] # second argument is the desired height
+  hv-rain-map-1: ["charts/rainfall_map.html", "660"] # second argument is the desired height
   hv-chart-2: ["charts/dayheatmap.html", "830"]
-  hv-watershed-map-1: ["charts/watershed_maptrim.html", "700"]
+  hv-watershed-map-1: ["charts/watershed_maptrim.html", "660"]
 folium-loader:
   folium-chart-1: ["charts/breakheatmap.html", "500"]
 ---
@@ -109,7 +109,7 @@ There were a total of 604 (recorded) main breaks in 2020. I was interested in ex
 
 Using altair, I created an interactive bar chart of the number of main breaks that occurred in 2020, grouped by type in descending order (from left to right) shown below. The tooltip displays the type description and the number of breaks that occurred for that type of break. 
 
-<div id="altair-chart-1"></div>
+<div id="altair-chart-0"></div>
 
 The most breaks that occurred in 2020, by a margin of 191, was circumferential (with a total of 288 breaks in 2020). *Is this consistent with the rest of the main breaks in Philadelphia?* When compared to the top 5 types of main breaks that occurred since 1964, circumferential is also the most common type of break - occuring almost 3 times more than the second most common type of break (longitudinal). Circumferential breaks are among the most common type of main breaks, usually due to older types of bedding material. 
 
