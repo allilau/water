@@ -5,7 +5,7 @@ altair-loader:
 hv-loader:
   hv-rain-map-1: ["charts/rainfall_map.html", "850"] # second argument is the desired height
   hv-chart-2: ["charts/dayheatmap.html", "860"]
-  hv-watershed-map-1: ["charts/watershed_map.html", "850"]
+  hv-watershed-map-1: ["charts/watershed_maptrim.html", "850"]
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
