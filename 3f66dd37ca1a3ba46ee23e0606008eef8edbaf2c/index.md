@@ -5,7 +5,7 @@ altair-loader:
   altair-chart-2: "charts/circbreaks2020_map.json"
 hv-loader:
   hv-rain-map-1: ["charts/rainfall_map.html", "740"] # second argument is the desired height
-  hv-chart-2: ["charts/dayheatmap.html", "860"]
+  hv-chart-2: ["charts/dayheatmap.html", "830"]
   hv-watershed-map-1: ["charts/watershed_maptrim.html", "750"]
 folium-loader:
 
