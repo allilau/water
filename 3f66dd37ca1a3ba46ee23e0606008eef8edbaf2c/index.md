@@ -21,9 +21,9 @@ This section will show examples of embedding interactive charts produced using [
 
 ## rainfall daily totals 
 
-below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)nn
+below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)nnkkk
 
-<div id="hv-chart-1"></div>
+<div id=""></div>
 
 ## rainfall seasonal totals 
 
