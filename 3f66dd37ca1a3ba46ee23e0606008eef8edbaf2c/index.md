@@ -19,11 +19,15 @@ For the MUSA550 final project, I wanted to visualize a rainfall dataset that con
 
 ## a. rainfall in philadelphia from 1990-2011
 Over 700,000 rows of raw data from rain gauges throughout the city without QAQC, the dataset contained some errors. To read the csv in through pandas, the parameter 'error_bad_lines' had to be adjusted since lines with too many fields will by default cause an exception to be raised, and no DataFrame will be returned.
+
 ```df = pd.read_csv("Rainfall_data_19900101_20210602_EST.csv", 
                     error_bad_lines=False,
                     engine='python')
 ```
-Setting the parameter 'error_bad_lines' as False, the "bad lines" are dropped from the DataFrame that is returned. 
+
+Setting the parameter 'error_bad_lines' as False, the "bad lines" are dropped from the DataFrame that is returned. The dataset was further trimmed to only columns that were needed and missing data was removed (i.e. empty columns for rain gauges 25-37, missing data in the coordinate columns). 
+Because I'm primarily interested in the temporal changes of rainfall in the city, the to_datetime() method was essential to this analysis and used to convert string Date time into a Python date time object. 
+
 ### rainfall daily totals 
 
 below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)
