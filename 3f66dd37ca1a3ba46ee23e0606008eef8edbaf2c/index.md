@@ -75,11 +75,25 @@ The tooltip identifies the gauge, its location, and the total rainfall measured 
 ~![top-5-seasonal-rainfall]({{ site.url }}{{ site.baseurl }}/assets/img/top10seasontotalrainfall.PNG)
 
 ### rainfall seasonal totals for each watershed
-Currently, seasonal precipitation totals are helpful for determining precipitation projections. This is because the resolution of available precipitation-prediction models are not yet high enough to to accomodate for each single gauge location. can be useful when working with downscaled projections from climate models. 
+Currently, seasonal precipitation totals are helpful for determining precipitation projections. However, the resolution of available precipitation-prediction models are not yet high enough to to accomodate each single gauge location. A larger geometry/coverage area is needed, such as splitting the area into quadrants. Because we are dealing with hydrology, organizing and binning rain gauges into their respective watersheds can be one method to scale to a useful coverage area and would be helpful for future work with downscaled projections from regional and global climate models. Philadelphia's land surface ultimately drains into one of the [seven watersheds that are tributaries to the Delaware River.](http://archive.phillywatersheds.org/your_watershed/delaware#:~:text=Philadelphia's%20entire%20land%20surface%20ultimately,tributaries%20to%20the%20Delaware%20River). There are a total of 7 major watersheds in the Philadelphia region: Wissahickon, Schuylkill, Darby-Cobbs, Delaware, Tacony-Frankford, Pennypack, and Poquessing. 
 
-below is an interactive map of the rain gauge rainfall seasonal totals for each watershed within Philadelphia (1990-2011)
+I retrieved the major watersheds in Philadelphia and their geometries from [OpenDataPhilly](https://www.opendataphilly.org/dataset/major-watersheds) and imported it as a geojson. I specified the crs as EPSG:4326 and used the spatial join .sjoin() operation to categorize each rain gauge and rainfall total into their respective watershed areas. I then trimmed the GeoDataFrame to only show the columns I needed. 
+
+```python
+rainfall_watershed = gpd.sjoin(rainfall_gauge, watersheds, op='within', how='left')
+```
+*How can we visualize the seasonal totals for each watershed for years 1990-2011?*
+I have seasonal rainfall totals for each gauge, but want to find the seasonal totals for each watershed. Using the groupby() operation, I created a new dataframe that grouped the gauges into the watershed and calculated the total seasonal rainfall for each area.
+
+```python
+out = rainfall_watershed.groupby(['WATERSHED_NAME', 'year', 'season'], as_index=False)['inches'].sum()
+```
+
+Finally, I merged it with the previous GeoDataFrame that contains the coordinates for each watershed and removed missing data for the years. Using hvplot.polygons, I created an interactive map of the rain gauge rainfall seasonal preciptation totals for each watershed within Philadelphia (1990-2011). The user can toggle the year and season to show the seasonal rainfall totals for each of the 7 watersheds. Dark green areas indicate a large amount of rainfall, while light yellow/white areas show a smaller total amount. 
 
 <div id="hv-watershed-map-1"></div>
+
+Consistent with the previous section, the summer of 2006 and 2009 received the most rainfall. This occured in the Schuylkill River and Delaware Watersheds. 
 
 ## b. main breaks in Philadelphia (2020)
 
