@@ -1,7 +1,7 @@
 ---
 layout: default
 altair-loader:
-  altair-chart-0: ["charts/breaktypes2020.json", "600"]
+  altair-chart-0: ["charts/breaktypes2020.json"]
   altair-chart-2: ["charts/circbreaks2020_map.json"]
 hv-loader:
   hv-rain-map-1: ["charts/rainfall_map.html", "660"] # second argument is the desired height
@@ -107,9 +107,9 @@ breaks2020 = breaks.loc[(breaks['BreakDate'] >= '2020-01-01')
 ```
 There were a total of 604 (recorded) main breaks in 2020. I was interested in exploring the most common types of main breaks that happened in the city. For this, I first had to catgeorize by the type of main break using the groupby() operation and calculate the count for each type using .size(). 
 
-Using altair, I created an interactive bar chart of the number of main breaks that occurred in 2020, grouped by type in descending order (from left to right) shown below. The tooltip displays the type description and the number of breaks that occurred for that type of break. 
-
 <div id="altair-chart-0"></div>
+
+Using altair, I created an interactive bar chart of the number of main breaks that occurred in 2020, grouped by type in descending order (from left to right) shown below. The tooltip displays the type description and the number of breaks that occurred for that type of break. 
 
 The most breaks that occurred in 2020, by a margin of 191, was circumferential (with a total of 288 breaks in 2020). *Is this consistent with the rest of the main breaks in Philadelphia?* When compared to the top 5 types of main breaks that occurred since 1964, circumferential is also the most common type of break - occuring almost 3 times more than the second most common type of break (longitudinal). Circumferential breaks are among the most common type of main breaks, usually due to older types of bedding material. 
 
