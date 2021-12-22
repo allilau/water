@@ -45,7 +45,7 @@ The DateTime column was then converted back to a Python date time object in orde
 
 The top precipitation events from 1990-2011 occured on September 16, 1999 and September 28, 2004, with a daily maximum total of 8.7 and 8.3 inches, respectively. Several gauges reported 8+ inches of rainfall on 9/16/1999. I used the nlargest() function to sort through the heatmap dataset and return the top 10 daily precipitation totals. 
 
-~![top-10-daily-rainfall]({{ site.url }}{{ site.baseurl }}/assets/images/top10dailytotalrainfall.PNG)
+~![top-10-daily-rainfall]({{ site.url }}{{ site.baseurl }}/assets/img/top10dailytotalrainfall.PNG)
 
 ### rainfall seasonal totals 
 How can we visualize where these rain gauges are located in the city / where do these cloudburst events occur on a local scale? 
