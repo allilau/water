@@ -3,7 +3,7 @@ layout: default
 altair-loader:
   altair-chart-1: "charts/measlesAltair.json"
 hv-loader:
-  hv-chart-1: ["charts/dayheatmap.html", "950"] # second argument is the desired height
+  hv-chart-1: ["charts/dayheatmap.html", "900"] # second argument is the desired height
 folium-loader:
   folium-chart-1: ["charts/foliumChart.html", "400"] # second argument is the desired height
   folium-chart-2: ["charts/percent_no_internet.html", "400"] # second argument is the desired height
@@ -21,7 +21,7 @@ This section will show examples of embedding interactive charts produced using [
 
 ## rainfall daily totals 
 
-below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)o
+below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)nn
 
 <div id="hv-chart-1"></div>
 
