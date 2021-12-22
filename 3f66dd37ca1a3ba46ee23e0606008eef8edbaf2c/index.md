@@ -3,7 +3,7 @@ layout: default
 altair-loader:
   altair-chart-1: "charts/measlesAltair.json"
 hv-loader:
-  hv-rain-map-1: ["charts/rainfall_map.html", "850"] # second argument is the desired height
+  hv-rain-map-1: ["charts/rainfall_map.html", "800"] # second argument is the desired height
   hv-chart-2: ["charts/dayheatmap.html", "860"]
   hv-watershed-map-1: ["charts/watershed_maptrim.html", "850"]
 folium-loader:
@@ -12,11 +12,11 @@ folium-loader:
 
 # welcome
 
-For the MUSA550 final project, I want to visualize a rianfall dataset that contains hourly precipitation measurements from 1990 to 2011 for each of the 24 rain gauges in Philadelphia. 
+For the MUSA550 final project, I want to visualize a rainfall dataset that contains hourly precipitation measurements from 1990 to 2011 for each of the 24 rain gauges in Philadelphia. 
 
 ## rainfall daily totals 
 
-below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)donut
+below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)cinnamon
 
 <div id="hv-chart-2"></div>
 
