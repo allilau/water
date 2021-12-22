@@ -34,7 +34,7 @@ alt.renderers.enable('notebook')
 
 ## rainfall daily totals 
 
-below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)mm
+below is an interactive heatmap of the rain gauge rainfall totals for each day (1990-2011)ooo
 
 <div id="hv-chart-1"></div>
 
