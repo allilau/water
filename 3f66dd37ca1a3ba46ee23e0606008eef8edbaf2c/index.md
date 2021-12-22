@@ -64,11 +64,15 @@ monthtt['season'] = np.select(conditions, choices)
 ```
 At this point, we have each gauge month record associated with a season. We have still need to aggregate the months to find the seasonal totals. I first created a new column with just the year using the .strftime() parameter for %Y, and used the groupby() operation to find the seasonal rainfall totals for each gauge. 
 
+To visualize spatially, we need associated coordinates for each of the 24 gauges. I loaded the csv with the relevant longitude and latitude coordinates for each gauge, dropped any missing coordinate values, and used the geopandas .points_from_xy() to generate a GeometryArray of shapely Point geometries. I then converted it to a GeoDataFrame and specified its original CRS in EPSG:4326 (or WGS 84). Philadelphia has a latitude of about 40 degrees and longitude of about -75 degrees, therefore I was able to assume that it is in EPSG=4326 after looking at the coordinates column in the original dataframe. In the final step, I merged the GeoDataFrame with the seasonal totals dataframe, while dropping any missing values for seasons. 
 
-
-below is an interactive map of the rain gauge rainfall seasonal totals (1990-2011)
+The GeoDataFrame for seasonal rainfall totals was then plotted using hvplot.points and included a widget-dropdown menu for each season and year. Below is the resultant interactive map of the rain gauge rainfall seasonal totals (1990-2011). 
 
 <div id="hv-rain-map-1"></div>
+
+The tooltip identifies the gauge, its location, and the total rainfall measured at its location for the chosen season and year. Similar to the previous section, I identified the top 5 seasonal precipitation totals. The most precipitation in Philadelphia from 1990-2011 occured in the summer months, with over 20 inches of rainfall accumulated in parts of the city. From the map above, you can see that rain gauges 21 (RG21) and 22 (RG22) are located in northwest Philadelphia and rain gauges 5 (RG5) and 12 (RG12) are located in the southeast corner of the city. These areas received the most rainfall in the summer of 2006 and 2009. 
+
+~![top-5-seasonal-rainfall]({{ site.url }}{{ site.baseurl }}/assets/img/top10seasontotalrainfall.PNG)
 
 ### rainfall seasonal totals for each watershed
 Currently, seasonal precipitation totals are helpful for determining precipitation projections. This is because the resolution of available precipitation-prediction models are not yet high enough to to accomodate for each single gauge location. can be useful when working with downscaled projections from climate models. 
