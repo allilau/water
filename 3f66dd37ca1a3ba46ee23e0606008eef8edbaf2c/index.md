@@ -1,12 +1,12 @@
 ---
 layout: default
 altair-loader:
-  altair-chart-1: "charts/breaktypes2020.json"
+  altair-chart-1: ["charts/breaktypes2020.json", "400"]
   altair-chart-2: "charts/circbreaks2020_map.json"
 hv-loader:
-  hv-rain-map-1: ["charts/rainfall_map.html", "770"] # second argument is the desired height
+  hv-rain-map-1: ["charts/rainfall_map.html", "740"] # second argument is the desired height
   hv-chart-2: ["charts/dayheatmap.html", "860"]
-  hv-watershed-map-1: ["charts/watershed_maptrim.html", "850"]
+  hv-watershed-map-1: ["charts/watershed_maptrim.html", "750"]
 folium-loader:
 
 ---
