@@ -96,12 +96,24 @@ Finally, I merged it with the previous GeoDataFrame that contains the coordinate
 Consistent with the previous section, the summer of 2006 and 2009 received the most rainfall. This occured in the Schuylkill River and Delaware Watersheds. 
 
 ## b. main breaks in Philadelphia (2020)
+Philadelphia's main break data is considered the oldest in the country with records dating back to 1964.  It is manually updated with written work orders, handled and organized by PWD's GIS and linear asssets planning unit. With over 47,000 records of main breaks in the city, I wanted to examine a smaller subset that can be visualized in a meaningful way. Because the 2018-2020 main break entries are considered most accurate due to a revised internal QAQC process, I decided to focus on the main breaks that occurred in 2020. 
 
 ### types of main breaks
+To prepare the data, I first removed missing latitude and longitude values and converted the dataframe to a GeoDataFrame using gpd.points_from_xy(). I also trimmed the dataset to the columns I needed. There is a separate csv that contains the main break type associated with a number in the main break dataset. I merged these dataframes so that there is a main break type-description with each entry. In order to select the main breaks in 2020, I first had to convert the string Date time into a Python date time object (same procedure done with the rainfall dataset above). The merged dataframe was then converted to a GeoDataFrame with a specified crs of EPSG:4326. I then selected the main breaks that occured in 2020 and created a new dataframe ('breaks2020'):
 
-below is an interactive bar chart of the number of main breaks that occurred in 2020, grouped by type in descending order (from left to right). 
+```python
+breaks2020 = breaks.loc[(breaks['BreakDate'] >= '2020-01-01')
+                               & (breaks['BreakDate'] < '2020-12-31')]
+```
+There were a total of 604 (recorded) main breaks in 2020. I was interested in exploring the most common types of main breaks that happened in the city. For this, I first had to catgeorize by the type of main break using the groupby() operation and calculate the count for each type using .size(). 
+
+Using altair, I created an interactive bar chart of the number of main breaks that occurred in 2020, grouped by type in descending order (from left to right) shown below. The tooltip displays the type description and the number of breaks that occurred for that type of break. 
 
 <div id="altair-chart-1"></div>
+
+The most breaks that occurred in 2020, by a margin of 191, was circumferential (with a total of 288 breaks in 2020). *Is this consistent with the rest of the main breaks in Philadelphia?* When compared to the top 5 types of main breaks that occurred since 1964, circumferential is also the most common type of break - occuring almost 3 times more than the second most common type of break (longitudinal). Circumferential breaks are among the most common type of main breaks, usually due to older types of bedding material. 
+
+~![top-5-main-break-type]({{ site.url }}{{ site.baseurl }}/assets/img/top5break.PNG)
 
 ### where did circumferential breaks occur? 
 
